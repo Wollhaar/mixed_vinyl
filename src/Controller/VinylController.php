@@ -19,7 +19,7 @@ class VinylController extends AbstractController
             ['song' => 'Lonely Day', 'artist' => 'System of a Down'],
             ['song' => 'Mindestens in 1000 Jahren', 'artist' => 'Frittenbude'],
             ['song' => 'Teenage Dirtbag', 'artist' => 'Wheatus'],
-            ['song' => 'On Maelancholy Hill', 'artist' => 'Gorillaz'],
+            ['song' => 'On Melancholy Hill', 'artist' => 'Gorillaz'],
         ];
 
         return $this->render('vinyl/homepage.html.twig', [
@@ -36,16 +36,18 @@ class VinylController extends AbstractController
         ]);
     }
 
-    #[Route('/categories/{category}')]
-    public function category(string $category = null): Response
+    #[Route('/categories/{category}/{genre}')]
+    public function category(string $category = null, string $genre = null): Response
     {
         $title = 'All Categories';
         if ($category) {
             $title = u(str_ireplace('-', ' ', $category))->title(true);
         }
+
         return $this->render('vinyl/category.html.twig', [
             'title' => 'Vinyl Categories',
-            'subtitle' => $title
+            'subtitle' => $title,
+            'genre' => $genre
         ]);
     }
 }
