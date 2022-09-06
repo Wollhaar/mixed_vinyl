@@ -7,16 +7,37 @@
         <h1>{{ title }}</h1>
         <h2>{{ subtitle }}</h2>
 
-        <h2 class="mt-5 mb-4">Filter by {{ genre ? genre : 'Genre' }}</h2>
+        <h2 class="mt-5 mb-4">Filter by {{ subtitle ? subtitle : 'Category' }}</h2>
         <ul class="genre-list ps-0 mt-2 mb-3">
             <li class="d-inline">
-                <a class="btn btn-primary btn-sm" href="#">Pop</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'pop'
+                }) }}">Pop</a>
             </li>
             <li class="d-inline">
-                <a class="btn btn-primary btn-sm" href="#">Rock</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'rock'
+                }) }}">Rock</a>
             </li>
             <li class="d-inline">
-                <a class="btn btn-primary btn-sm" href="#">Heavy Metal</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'house'
+                }) }}">House</a>
+            </li>
+            <li class="d-inline">
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'hip-hop'
+                }) }}">Hip Hop</a>
+            </li>
+            <li class="d-inline">
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'elekktro'
+                }) }}">Elekktro</a>
+            </li>
+            <li class="d-inline">
+                <a class="btn btn-primary btn-sm" href="{{ path('app_categories', {
+                    category: 'alternative'
+                }) }}">Alternative</a>
             </li>
         </ul>
 

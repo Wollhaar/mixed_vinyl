@@ -10,7 +10,7 @@ use function Symfony\Component\String\u;
 
 class VinylController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_homepage')]
     public function homepage(): Response
     {
         $tracks = [
@@ -28,7 +28,7 @@ class VinylController extends AbstractController
         ]);
     }
 
-    #[Route('/favorites')]
+    #[Route('/favorites', name: 'app_favorites')]
     public function favorites(): Response
     {
         return $this->render('vinyl/favorites.html.twig', [
@@ -36,18 +36,21 @@ class VinylController extends AbstractController
         ]);
     }
 
-    #[Route('/categories/{category}/{genre}')]
-    public function category(string $category = null, string $genre = null): Response
+    #[Route('/categories/{category}/{artist}', name: 'app_categories')]
+    public function category(string $category = null, string $artist = null): Response
     {
         $title = 'All Categories';
         if ($category) {
             $title = u(str_ireplace('-', ' ', $category))->title(true);
         }
+        if ($artist) {
+            $selection = u(str_ireplace('-', ' ', $artist))->title(true);
+        }
 
         return $this->render('vinyl/category.html.twig', [
             'title' => 'Vinyl Categories',
             'subtitle' => $title,
-            'genre' => $genre
+            'artist' => $selection ?? null
         ]);
     }
 }
