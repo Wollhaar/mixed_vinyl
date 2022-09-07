@@ -7,6 +7,9 @@
         <h1>{{ title }}</h1>
         <h2>{{ subtitle }}</h2>
 
+        <div {{ stimulus_controller('artist') }}></div>
+        <button type="button" {{ stimulus_action('artist', 'favorite') }}></button>
+
         <h2 class="mt-5 mb-4">Filter by {{ subtitle ? subtitle : 'Category' }}</h2>
         <ul class="genre-list ps-0 mt-2 mb-3">
             <li class="d-inline">
